@@ -2,6 +2,7 @@
 var Q = require('kew');
 
 var repo = require('./repo');
+var KnexBackend = require('./KnexBackend');
 
 // declare a value object
 function Email(v) {
@@ -30,7 +31,13 @@ ApplicationStore.prototype.findAllUsersByPrimaryEmail = repo.findAll(UserId, { p
 
 // for test injection/mocking, simple repo instantiation by itself creates a "no-op" object, with stubs throwing an error on invocation
 
-// live code
-var store = repo.implement(ApplicationStore);
+// database setup
+var defaultBackend = new KnexBackend('mysql', {});
 
+var env = new repo.Environment();
+env.addIdentity(UserId, defaultBackend); // this allows auto-creating User identities in DB
+
+var store = env.implement(ApplicationStore, defaultBackend); // @todo consider per-method granularity
+
+// business logic
 store.findUserByPrimaryEmail(new Email('test@asd'));

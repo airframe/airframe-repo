@@ -6,27 +6,30 @@ function createStub() {
     };
 }
 
-function RepoFactory() {
+function Environment() {
 }
 
-RepoFactory.prototype.get = function (idConstructor, fieldMap) {
-    return createStub();
+Environment.prototype.addIdentity = function (idConstructor, backend) {
 };
 
-RepoFactory.prototype.set = function (idConstructor, fieldMap) {
-    return createStub();
-};
-
-RepoFactory.prototype.findOne = function (idConstructor, fieldMap) {
-    return createStub();
-};
-
-RepoFactory.prototype.findAll = function (idConstructor, fieldMap) {
-    return createStub();
-};
-
-RepoFactory.prototype.implement = function (repoConstructor) {
+Environment.prototype.implement = function (repoConstructor, backend) {
     return new repoConstructor();
 };
 
-module.exports = new RepoFactory();
+module.exports.Environment = Environment;
+
+module.exports.get = function (idConstructor, fieldMap) {
+    return createStub();
+};
+
+module.exports.set = function (idConstructor, fieldMap) {
+    return createStub();
+};
+
+module.exports.findOne = function (idConstructor, fieldMap) {
+    return createStub();
+};
+
+module.exports.findAll = function (idConstructor, fieldMap) {
+    return createStub();
+};
