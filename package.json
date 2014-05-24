@@ -1,0 +1,13 @@
+{
+  "name": "airframe-repo",
+  "version": "0.0.0",
+  "description": "Airframe data library using repository pattern",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "kew": "~0.4.0"
+  },
+  "repository": "",
+  "author": "Nick Matantsev <nick.matantsev@gmail.com>",
+  "license": "BSD"
+}
